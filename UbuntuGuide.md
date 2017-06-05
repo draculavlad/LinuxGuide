@@ -1,4 +1,4 @@
-* Ubuntu Desktop 16.04 Setup
+* Ubuntu Desktop 16.04 VNC Setup
 ```shell
 sudo apt-get update -y
 sudo apt-get install -y wget curl telnet tar unzip vim git
