@@ -2,12 +2,13 @@
 
 * nginx version 1.6.3
 
-# a quick appoach with python
+# a quick approach with python
 * host current dir as your http file storage root path
 * performance issue
 * do not support multi-user scenario
+* host service on port 8000
 ```
-python -m SimpleHTTPServer 80
+python -m SimpleHTTPServer 
 ```
 
 
