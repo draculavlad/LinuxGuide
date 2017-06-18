@@ -1,4 +1,4 @@
-** Ubuntu Init
+## Ubuntu Init
 ```shell
 sudo apt-get update -y
 sudo apt-get install -y wget curl telnet tar unzip vim git
@@ -19,7 +19,7 @@ Acquire::https {
 EOF
 ```
 
-** Ubuntu Desktop 16.04 VNC Setup
+## Ubuntu Desktop 16.04 VNC Setup
 ```shell
 sudo apt install xfce4 xfce4-goodies tightvncserver -y
 
