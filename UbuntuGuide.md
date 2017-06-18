@@ -1,14 +1,30 @@
-* Ubuntu Desktop 16.04 VNC Setup
+** Ubuntu Init
 ```shell
 sudo apt-get update -y
 sudo apt-get install -y wget curl telnet tar unzip vim git
 sudo apt-get install -y ssh
 service sshd restart
+```
+* incase you need a http_proxy
+```shell
+export http_proxy=http://x.x.x.x:xxxx
+export https_proxy=$http_proxy
+
+touch /etc/apt/apt.conf.d/https_conf
+cat <<EOF > /etc/apt/apt.conf.d/https_conf 
+Acquire::https {
+        Verify-Peer "false";
+        Verify-Host "false";
+}
+EOF
+```
+
+** Ubuntu Desktop 16.04 VNC Setup
+```shell
 sudo apt install xfce4 xfce4-goodies tightvncserver -y
 
 vncpasswd
 ```
-
 * configuration
 
 ```shell
