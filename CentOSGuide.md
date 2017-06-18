@@ -27,3 +27,17 @@ yum install -y python-setuptools git && easy_install pip
 pip install shadowsocks
 sudo ssserver -p 443 -k ${your_password} -m aes-256-cfb --user nobody -d start
 ```
+
+# Cloned Vmware Image Network Configuration
+* for centos 6.6
+
+1. modify /etc/udev/rules.d/70-persistent-net.rules 
+delete info for eth0,  update name of interface eth1 with eth0. 
+ 
+2. replace the mac addr in /etc/sysconfig/network-scripts/ifcfg-eth0 with the mac addr of interface eth0 after updating /etc/udev/rules.d/70-persistent-net.rules
+
+* or
+* repeate 1
+* do a little change in /etc/sysconfig/network-scripts/ifcfg-eth0
+* remove HWADDR and UUDI
+* set onboot=yes
