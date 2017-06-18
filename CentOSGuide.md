@@ -22,7 +22,6 @@ yum install -y epel-release
 
 ## shell script
 ```shell
-rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 yum update -y
 yum install -y python-setuptools git && easy_install pip
 pip install shadowsocks
