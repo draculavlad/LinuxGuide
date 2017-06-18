@@ -1,4 +1,4 @@
-# NgxCloudStorage
+# HttpFolderShare
 
 * nginx version 1.6.3
 
