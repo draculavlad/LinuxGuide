@@ -18,6 +18,18 @@ Acquire::https {
 }
 EOF
 ```
+## Ubuntu Enabling SSH Login With Root
+
+* 16.04 Xenial Xerus
+```shell
+sudo passwd root
+sudo sed -i 's/prohibit-password/yes/' /etc/ssh/sshd_config && sudo systemctl restart sshd
+```
+* 14.04
+```shell
+sudo passwd root
+sudo passwd -u roo
+```
 
 ## Ubuntu Desktop 16.04 VNC Setup
 ```shell
