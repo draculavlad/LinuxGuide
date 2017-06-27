@@ -2,10 +2,10 @@
 
 # for example, your have 4 hosts:
 ```conf
-node0.kzk.lc.   172.20.78.191
-node1.kzk.lc.   172.20.78.192
-node2.kzk.lc.   172.20.78.193
-node3.kzk.lc.   172.20.78.194
+node0.kzk.lc   172.20.78.191
+node1.kzk.lc   172.20.78.192
+node2.kzk.lc   172.20.78.193
+node3.kzk.lc   172.20.78.194
 ```
 
 # add zone configuration to /etc/named.conf:
