@@ -1,5 +1,5 @@
 Hot Key Desc:
-
+```
 x         delete content on current index
 dd        delete current line
 u         recover last changes
@@ -13,3 +13,7 @@ gg        jump to start of file
 :w        save all changes
 :q!       discard all changes and exit
 :q        exit
+
+:!grep xxx % c    total count of xxx 
+:v/xxx/d        delete line without xxx
+```
