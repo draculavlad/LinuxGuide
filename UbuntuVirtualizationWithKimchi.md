@@ -1,45 +1,45 @@
 ### enable ubuntu server 18.04 kernel-based virtualization with web gui [kimchi]
 
-# update system
+## update system
 ```bash
 sudo apt update -y
 sudo apt upgrade -y
 ```
 
-# check cpu availability for virtualization
+## check cpu availability for virtualization
 ```bash
 sudo apt install cpu-checker -y
 sudo kvm-ok
 ```
 
-## result expectation(please enable vt-d in bios config):
+# result expectation(please enable vt-d in bios config):
 INFO: /dev/kvm exists
 KVM acceleration can be used
 
-# enable universe & multiverse repo(it's a bug in early releases of ubuntu server 18.04)
+## enable universe & multiverse repo(it's a bug in early releases of ubuntu server 18.04)
 ```bash
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
 ```
 
-# install virtualization related libs and tools 
+## install virtualization related libs and tools 
 ```bash
 sudo apt install qemu qemu-kvm libvirt-bin libvirt-clients libvirt-daemon-system bridge-utils virt-manager -y
 ```
 
-# install nginx for kimchi
+## install nginx for kimchi
 ```
 sudo apt-get install nginx -y
 ```
 
-# download wok & related plugins
+## download wok & related plugins
 ```bash
 wget https://github.com/kimchi-project/kimchi/releases/download/2.5.0/wok-2.5.0-0.noarch.deb
 wget http://kimchi-project.github.io/gingerbase/downloads/latest/ginger-base.noarch.deb
 wget https://github.com/kimchi-project/kimchi/releases/download/2.5.0/kimchi-2.5.0-0.noarch.deb
 ```
 
-# install wok & giner-base
+## install wok & giner-base
 ```bash
 sudo dpkg -i wok-2.5.0-0.noarch.deb
 sudo apt --fix-broken install
@@ -68,7 +68,7 @@ rm Makefile.in
 ar rcs kimchi-2.5.0-0.modified.noarch.deb debian-binary control.tar.gz data.tar.xz
 ```
 
-# install kimchi & reboot
+## install kimchi & reboot
 ```
 sudo dpkg -i kimchi-2.5.0-0.modified.noarch.deb
 sudo init 6
