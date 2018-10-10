@@ -1,4 +1,4 @@
-### enable ubuntu server 18.04 kernel-based virtualization with web gui [kimchi]
+# enable ubuntu server 18.04 kernel-based virtualization with web gui [kimchi]
 
 ## update system
 ```bash
@@ -12,7 +12,7 @@ sudo apt install cpu-checker -y
 sudo kvm-ok
 ```
 
-# result expectation(please enable vt-d in bios config):
+### result expectation(please enable vt-d in bios config):
 INFO: /dev/kvm exists
 KVM acceleration can be used
 
@@ -49,8 +49,8 @@ sudo systemctl restart wokd
 sudo init 6
 ```
 
-# modify kimchi debian package depencies list and install python-pil
-# due to one of kimchi's dependency, python-imaging, is renamed to python-pil in python3 while python3 is the default python sdk in Ubuntu 18.04 
+## modify kimchi debian package depencies list and install python-pil
+### due to one of kimchi's dependency, python-imaging, is renamed to python-pil in python3 while python3 is the default python sdk in Ubuntu 18.04 
 ```bash
 mkdir kimchi-work-dir
 mv kimchi-2.5.0-0.noarch.deb kimchi-work-dir/
