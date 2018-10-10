@@ -69,7 +69,31 @@ ar rcs kimchi-2.5.0-0.modified.noarch.deb debian-binary control.tar.gz data.tar.
 ```
 
 ## install kimchi & reboot
-```
+```shell
 sudo dpkg -i kimchi-2.5.0-0.modified.noarch.deb
 sudo init 6
 ```
+
+## Problems:
+* Permission Issue: modify the file permission into 766
+* Driver Descriptor Issue: 
+### modify [/usr/lib/python2.7/dist-packages/wok/plugins/kimchi/model/templates.py]
+replace
+```
+ISO_TYPE = "ISO 9660 CD-ROM"}
+```
+into 
+```
+ISO_TYPE = ["DOS/MBR", "ISO 9660 CD-ROM"]
+```
+
+replace
+```
+if ISO_TYPE in ftype:
+```
+into
+```
+        iscdrom = [t for t in ISO_TYPE if t in ftype]
+        if iscdrom:
+```
+
