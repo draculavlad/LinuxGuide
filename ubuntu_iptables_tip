@@ -1,0 +1,92 @@
+/etc/init.d/iptables网上的解法应该都是基于CentOS 6去实践，而在CentOS 7中又被firewalld给取代，所以操作上的写法基本会改变，但是底层iptables则不会改变，iptables默认加载在内存，管理网络规则，而至于在实现网络传输时，由系统决定，比如网络服务重启等操作就是系统决定的，所以只要找准功能点应该不难去解决问题。
+
+在Ubuntu中，为了简化iptables的规则添加，在上层封装了UFW的防火墙，但是这个只涉及到防火墙的规则，而不涉及到转发路由等功能。
+
+虽然各个发行版都有自己的独特规则管理软件，但是底层添加iptables的规则方式依然不变。
+
+下面是针对Ubuntu的iptables一些相关操作：
+
+a] ufw命令 - 此命令用于管理Linux防火墙，旨在为用户提供易于使用的界面。
+
+b] iptables命令 - 该命令用于设置，维护和检查Linux内核中IPv4包过滤规则的表。
+
+查找防火墙的状态
+
+通过打开终端或通过基于ssh的会话登录，以root用户身份登录。键入以下命令：
+
+sudo ufw status
+Ubuntu stop iptables service命令（类似于/etc/init.d/iptables stop）
+
+键入以下命令卸载防火墙，并在启动时禁用防火墙：
+
+sudo ufw disable
+Ubuntu start iptables service命令（类似于/etc/init.d/iptables start）
+
+键入以下命令重新加载防火墙并启动防火墙启动：
+
+sudo ufw enable
+Ubuntu reload / restart iptables service命令（类似于/etc/init.d/iptables reload/restart）
+
+键入以下命令重新加载防火墙：
+
+sudo ufw reload
+在Ubuntu和其他Linux发行版上启用/禁用防火墙的替代方法
+
+如果您不使用ufw命令和/或ufw未安装，请尝试以下通用方法：
+
+获取IPv4 iptables状态
+
+sudo iptables -L -n -v
+获取IPv6 ip6tables状态
+
+sudo ip6tables -L -n -v
+保存IPv4 iptables防火墙
+
+使用iptables-save命令保存当前的防火墙规则：
+
+sudo iptables-save > $HOME/firewall.txt
+保存IPv6 ip6tables防火墙
+
+sudo ip6tables-save > $HOME/firewall-6.txt
+恢复IPv4 iptables防火墙
+
+使用iptables-restore命令恢复防火墙规则：
+
+sudo iptables-restore < $HOME/firewall.txt
+恢复IPv6 ip6tables防火墙
+
+sudo ip6tables-restore < $HOME/firewall-6.txt
+把它们放在一起
+
+要停止基于Ipv4的iptables防火墙，请输入：
+
+复制代码
+sudo iptables-save >  $ HOME / firewall.txt
+sudo iptables -X 
+sudo iptables -t nat -F 
+sudo iptables -t nat -X 
+sudo iptables -t mangle -F 
+sudo iptables -t mangle -X 
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT
+复制代码
+要停止基于Ipv6的iptables防火墙，请输入：
+
+复制代码
+sudo ip6tables-save >  $ HOME / firewall- 6 .txt
+sudo ip6tables -X 
+sudo ip6tables -t mangle -F 
+sudo ip6tables -t mangle -X 
+sudo ip6tables -P INPUT ACCEPT
+sudo ip6tables -P FORWARD ACCEPT
+sudo ip6tables -P OUTPUT ACCEPT 
+复制代码
+选项：
+
+-F：冲洗选定的链（如果没有给定，则表中的所有链）。这相当于逐个删除所有的规则。
+-X：删除指定的可选用户定义的链。必须没有参考链。如果有的话，您必须删除或替换引用规则才能删除链。
+-P chainNameHere ACCEPT ：将链的策略设置为给定的目标。
+-L ：列出规则。
+-v ：详细输出。
+-n：数字输出。IP地址和端口号将以数字格式打印。
